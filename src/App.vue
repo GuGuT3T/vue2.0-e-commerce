@@ -1,13 +1,35 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    {{ hello }}
+    <p v-html='hello'></p>
+    {{ num + 1}}
+    {{ status ? 'success' : 'fail'  }}
+    <li v-for = "(item,index) in list" :class="{add:index % 2}">
+      {{ item.name }} - {{ item.price }} - {{ index }}
+    </li>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      hello: 'word',
+      num: 1,
+      status: false,
+      list: [
+        {
+          name:'apple',
+          price: 34
+        },
+        {
+          name:'apple2',
+          price: 36
+        },
+      ]
+    }
+  }
 }
 </script>
 
@@ -17,7 +39,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
+  color: red;
 }
 </style>
