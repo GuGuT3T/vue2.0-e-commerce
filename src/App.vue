@@ -13,11 +13,20 @@
     <ul>
         <li v-for = "(value,key) in oblist">{{value}}+{{key}}</li>
     </ul>
+    <a v-bind:href="link">1111</a>
+    <a :href="link">222</a>
+    <a :class="classStr">222</a>
+    <a :class="className">绑定对象</a>
+    <a :class="classArr">绑定数组</a>
+    <a :class="[classA,classB]">标签绑定数组</a>
+    <a :class="[classA,{'red-font2':hasError}]">混合绑定</a>
+    <a :style="linkCss">绑定样式</a>
     <button v-on:click="addItem">添加</button>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 // import componentA from './components/a'
 export default {
   // components: { // ES6
@@ -30,6 +39,19 @@ export default {
   data () {
     return {
       hello: 'word',
+      link: 'http://www.baidu.com',
+      classStr: 'qqq',
+      className: { //绑定对象
+        'red-font':true,
+        'blue-font': false,
+      },
+      classArr: ['red-font','blue-font'],
+      classA: 'red-font',
+      classB: 'blue-font',
+      hasError: false,
+      linkCss: {
+        color: '#000'
+      },
       num: 1,
       status: false,
       list: [
@@ -53,7 +75,21 @@ export default {
 
     // },
     addItem (){
-          console.log(this.list)
+          // this.list.push({ // 会更新
+          //   name:'apple1',
+          //   price: 66
+          // })
+          // this.list[1] = { // 不会更新
+          //   name:'apple1',
+          //   price: 66
+          // }
+          Vue.set(this.list,1,{
+            name: 'apple1',
+            price: 66
+          })
+          this.linkCss = {
+            color: 'red'
+          }
         }
   }
 }
@@ -67,5 +103,8 @@ export default {
   text-align: center;
   margin-top: 60px;
   color: red;
+}
+.qqq{
+  color: blue;
 }
 </style>
