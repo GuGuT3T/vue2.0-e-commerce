@@ -1,5 +1,5 @@
 <template>
-<!-- <componentA></componentA> -->
+  <!-- <comA></comA> -->
   <div id="app">
     {{ hello }}
     <p v-html='hello'></p>
@@ -31,7 +31,7 @@
     <input @keydown.13="onkeydown">
     <br>
     <!-- 自定义事件 -->
-    <comA @my-event="onComaMyEvent"></comA>
+    <com-a @my-event="onComaMyEvent"></com-a>
     表单事件绑定
     <p>v-model.lazy</p>
     <p>v-model.number（数字转为number类型）</p>
@@ -54,13 +54,21 @@
       <option v-for="item in selectOption" :value="item.value">{{item.text}}</option>
     </select>
     {{ selection }}
+    <br>
+     计算属性
+   <input type="text" v-model="myValue1">
+   {{ myValueWithoutNum }}
+   {{ getMyValueWithoutNum() }}
+   <br>
+   属性监听watch
+   <input type="text" v-model="myVal">
   </div>
+  
 </template>
 
 <script>
 import Vue from "vue";
 import comA from "./components/a";
-// import componentA from './components/a'
 export default {
   components: {
     // ES6
@@ -72,20 +80,22 @@ export default {
   name: "App",
   data() {
     return {
+      myVal: '',
+      myValue1 : '计算属性',
       selectOption: [
         {
-        text: 'apple',
-        value: 0
-      },
-       {
-        text: 'banner',
-        value: 1
-      }
+          text: "apple",
+          value: 0
+        },
+        {
+          text: "banner",
+          value: 1
+        }
       ],
-      selection: '3333',
+      selection: "3333",
       mybox: [],
       mybox1: [],
-      myValue: '空',
+      myValue: "空",
       hello: "word",
       link: "http://www.baidu.com",
       classStr: "qqq",
@@ -120,10 +130,23 @@ export default {
       }
     };
   },
+  watch: { // 属性监听
+    myVal (val,oldVal) {
+      console.log(val,oldVal)
+    }
+  },
+  computed: { // 计算属性
+    myValueWithoutNum () { // 只会根据data的myValue1变量 更新
+      return this.myValue1.replace(/\d/g,''); // 计算属性删除数字
+    }
+  },
   methods: {
     // addItem: function(){ //ES5
 
     // },
+    getMyValueWithoutNum () { // 无论什么时候调用都会重新获取值
+      return this.myValue1.replace(/\d/g,'');
+    },
     addItem() {
       // this.list.push({ // 会更新
       //   name:'apple1',
@@ -149,7 +172,7 @@ export default {
     },
     onComaMyEvent(parmfromA) {
       console.log(parmfromA);
-      console.log('自定义事件');
+      console.log("自定义事件");
     }
   }
 };
