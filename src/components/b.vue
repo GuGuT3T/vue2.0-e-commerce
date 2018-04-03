@@ -2,7 +2,7 @@
   <div>
       {{ hello }}
       <br>
-      {{ number }}
+      <!-- {{ number }} -->
       <br>
       <!-- {{ numberToDo }} 使用驼峰 -->
       <!-- {{ myValue }} 动态绑定 -->
@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      hello: "i am component a"
+      hello: "i am component b"
     };
   },
   methods: {

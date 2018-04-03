@@ -8,6 +8,11 @@
       <p slot="header">header/123//传往子组件（slot标签）</p>
       <p slot="footer">footer</p>
     </com-a>
+    <p>动态组件</p>
+    <input type="text" v-model.neumber="myVal">
+    <kepp-alive> // 缓存起来提高加载速度
+      <p :is="currenView"></p>
+    </kepp-alive>
   </div>
   
 </template>
@@ -27,6 +32,7 @@ export default {
   name: "App",
   data() {
     return {
+      currenView: 'com-a',
      myVal: '11',
     }
   },
