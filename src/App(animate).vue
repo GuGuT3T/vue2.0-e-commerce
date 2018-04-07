@@ -21,7 +21,7 @@
    </div>
    <div>
         <transition name="fade" mode="out-in">  //默认先进新的 再进旧的
-           <div :is="currenView"></div>
+           <div :is="currenView">1</div>
         </transition>
    </div>
   </div>
