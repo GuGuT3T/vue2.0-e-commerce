@@ -16,7 +16,7 @@ export default {
   props: {
     number: [Number, String],
     "number-to-do": [Number, String, Object],
-    "my-value": [Number, String]
+    "my-value": [Number,String]
   },
   data() {
     return {
