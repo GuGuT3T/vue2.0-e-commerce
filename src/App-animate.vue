@@ -34,7 +34,7 @@ import comA from "./components/a";
 import comB from "./components/b";
 export default {
   components: {
-    // ES6
+    // ES6 
     comA,comB
   },
   // components: { // ES5
