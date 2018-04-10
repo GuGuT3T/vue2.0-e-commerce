@@ -1,27 +1,26 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png" alt="">
-    {{ totalPrice }}
-    <apple></apple>
-    <banana></banana>
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <router-link :to="'apple'" tag='li'>Go to apple</router-link> // 可以传入字符串 tag指定li
+    <router-link :to="{path:'banana'}">Go to banana</router-link>
+    <router-link :to="{path:'banana/red'}">Go to redBanana</router-link>
+    <br>// 命名路由
+    <!-- <router-link :to="{name:'applePage'}">Go to applePage</router-link> -->
+    
+    <router-view></router-view>
+    <br>
+    <router-view name="viewA"></router-view> // 命名视图
   </div>
   
 </template>
 
 <script>
-import Apple from './components/apple'
-import Banana from './components/banana'
 export default {
   name: "app",
   components: {
-    Apple,Banana
+    // hello
   },
-  computed: { //计算属性
-    totalPrice () {
-      return this.$store.state.totalPrice
-      // return this.$store.getter.getTotal //从getter获取
-    }
-  }
 };
 </script>
 
