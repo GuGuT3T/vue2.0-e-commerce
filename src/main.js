@@ -1,70 +1,23 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import VRouter from 'vue-router' // 引入库
-import Apple from './components/apple'
-import Banana from './components/banana'
-import redBanana from './components/redBanana'
-import Vuex from 'vuex'
-Vue.config.productionTip = false;
-Vue.use(VRouter); // 注册使用路由
-Vue.use(Vuex); // 注册Vuex
-
-let router = new VRouter({
+import Layout from './components/layout.vue'
+import VueRouter from 'vue-router'
+import IndexPage from './pages/index.vue'
+Vue.use(VueRouter); // 注册router
+let router = new VueRouter({
     mode: 'history', // 默认设置history哈希，设置之后没有哈希  处理非HTML5
     routes: [{
-            path: '/',
-            redirect: '/banana' // 重定向
-        },
-        {
-            path: '/apple/:color', // 每一个对应映射表  ：之后跟参数（可以有多个参数）
-            name: 'applePage',
-            component: {
-                viewA: Apple,
-                viewB: Banana
-            }
-        },
-        {
-            path: '/banana',
-            component: Banana,
-            children: [{
-                path: 'red',
-                component: redBanana
-            }]
-        }
-    ]
+        path: '/',
+        component: IndexPage
+    }]
 });
-
-let store = new Vuex.Store({
-    state: {
-        totalPrice: 0
-    },
-    mutations: { // 同步
-        increment(state, price) {
-            state.totalPrice += price;
-        },
-        decrement(state, price) {
-            state.totalPrice -= price;
-        }
-    },
-    actions: { // 可以进行异步
-        increase(context, price) {
-            context.commit('increment', price)
-        }
-    }
-})
-
-
 
 new Vue({
     el: '#app',
     router,
-    store,
-    // router: router ,
-    template: '<App/>',
+    template: '<Layout/>',
     components: {
-        App
+        Layout
     }
 });
-export default router; //将路由器导出
