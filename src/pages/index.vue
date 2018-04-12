@@ -43,12 +43,16 @@
 <script>
 export default {
   created: function (){
-    this.$http.get('getList')
+
+    this.$http.jsonp('http://192.168.2.105:8080/getOne/1')
     .then(function(data){
-      console.log(111)
+      console.log('成功')
+      console.log(data)
     },function(err){
+      console.log('失败')
       console.log(err)
     })
+    
   },
   data() {
     return {
