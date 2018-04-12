@@ -43,12 +43,20 @@
 <script>
 export default {
   created: function (){
+<<<<<<< HEAD
     this.$http.get('getList',{userId:123})
+=======
+
+    this.$http.jsonp('http://192.168.2.105:8080/getOne/1')
+>>>>>>> 041b7b8c91efaeed4309fe14588b76c3034e81c7
     .then(function(data){
-      console.log(111)
+      console.log('成功')
+      console.log(data)
     },function(err){
+      console.log('失败')
       console.log(err)
     })
+    
   },
   data() {
     return {

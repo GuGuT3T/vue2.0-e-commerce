@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/restful':{
+        target:'http://192.168.2.105:8080',
+        changeOrigin:true,
+        pathRewrite:{
+            // '^/restful':'/restful'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
