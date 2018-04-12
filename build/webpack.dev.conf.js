@@ -10,28 +10,33 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
-// const express = require('express')
-// const app = express(); // 请求server
-// let appData = require('../static/ceshi.json')
-// let suibian = appData.suibian //获取对应的本地数据并赋值给变量
-// let apiRoutes = express.Router() //express框架的router函数
-// app.use('/api', apiRoutes) //通过路由请求数据
+const jsonServer = require('json-server')
+
 const appData = require('../static/ceshi.json') //加载本地数据文件
 const seller = appData.seller //获取对应的本地数据
 
+// 给json-server添加端口号
+const apiServer = jsonServer.create()
+const apiRouter = jsonServer.router('db.json')
+const middlewares = jsonServer.defaults()
+apiServer.use(middlewares)
+apiServer.use(apiRouter)
+apiServer.listen(8888, () => {
+    console.log('JSON Server is running')
+})
 
 
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 let proxyTable = {
-  '/admin': {
-    target: 'http://127.0.0.1:3000',
-    changeOrigin: true,
-    pathRewrite:{
-      
+    '/admin': {
+        target: 'http://127.0.0.1:8888',
+        changeOrigin: true,
+        pathRewrite: {
+
+        }
     }
-  }
 }
 const devWebpackConfig = merge(baseWebpackConfig, {
     module: {
@@ -62,14 +67,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             poll: config.dev.poll,
         },
         before(app) { //调用接口
-            // app.get('api/suibian', (req, res) => {
-            //     res.json({
-            //             errno: 0,
-            //             data: suibian
-            //         }) //接口返回json数据，上面配置的数据seller就赋值给data请求后调用
-
-            // })
-
             app.get('/api/seller', (req, res) => {
                 res.json({
                         errno: 0,
