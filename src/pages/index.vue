@@ -43,7 +43,7 @@
 <script>
 export default {
   created: function (){
-    this.$http.get('getList')
+    this.$http.get('getList',{userId:123})
     .then(function(data){
       console.log(111)
     },function(err){

@@ -16,7 +16,9 @@
       </div>
     </div>
     <div class="app-content">
+      <keep-alive>
         <router-view></router-view>
+      </keep-alive>
     </div>
     <div class="app-foot">
       <p>© 2016 fishenal MIT</p>
