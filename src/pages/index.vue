@@ -43,6 +43,7 @@
 <script>
 export default {
   created: function (){
+    // this.$http.get('getList',{userId:123})
 
     this.$http.jsonp('http://192.168.2.105:8080/getOne/1')
     .then(function(data){
