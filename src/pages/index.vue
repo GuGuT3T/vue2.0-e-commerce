@@ -24,6 +24,7 @@
       </div>
     </div>
     <div class="index-right">
+      <slide-show></slide-show>
       <div class="index-board-list">
         <div class="index-board-item" v-for="(item,index) in boardList" 
         v-bind:class="[{'line-last':index%2 !== 0},
@@ -41,15 +42,19 @@
   </div>
 </template>
 <script>
+import slideShow from '../components/slideShow.vue'
 export default {
+  components: {
+    slideShow
+  },
   created: function (){
-    // this.$http.get('getList',{userId:123})
-
-    this.$http.jsonp('http://192.168.2.105:8080/getOne/1')
-    .then(function(data){
+    // json-server:post请求一般为新增内容，获取数据用get
+    // 如果需要用到post可以用express+fs请求本地文件
+    this.$http.get('api/getNewsList')
+    .then((res) => {
       console.log('成功')
-      console.log(data)
-    },function(err){
+      this.newsList = res.body;
+    },(err) => {
       console.log('失败')
       console.log(err)
     })
@@ -104,18 +109,18 @@ export default {
         }
       },
       newsList: [
-        {
-          title: '数据统计',
-          url: 'http://baidu.com'
-        },
-        {
-          title: '数据统计2',
-          url: 'http://baidu.com'
-        },
-        {
-          title: '数据统计3',
-          url: 'http://baidu.com'
-        },
+        // {
+        //   title: '数据统计',
+        //   url: 'http://baidu.com'
+        // },
+        // {
+        //   title: '数据统计2',
+        //   url: 'http://baidu.com'
+        // },
+        // {
+        //   title: '数据统计3',
+        //   url: 'http://baidu.com'
+        // },
       ],
       boardList: [
         {
