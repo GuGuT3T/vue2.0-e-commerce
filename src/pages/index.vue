@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="index-right">
-      <slide-show></slide-show>
+      <slide-show :slides="slides" :inv="slideSpeed"></slide-show>
       <div class="index-board-list">
         <div class="index-board-item" v-for="(item,index) in boardList" 
         v-bind:class="[{'line-last':index%2 !== 0},
@@ -62,6 +62,30 @@ export default {
   },
   data() {
     return {
+      slideSpeed: 2000,
+      slides: [ // 轮播数组
+
+        {
+          src: require('../assets/slideShow/pic1.jpg'), // 通过require，webpack将图片解析到相应位置，js需要
+          title: 'xxx1',
+          href: 'detail/analysis'
+        },
+        {
+          src: require('../assets/slideShow/pic2.jpg'),
+          title: 'xxx2',
+          href: 'detail/count'
+        },
+        {
+          src: require('../assets/slideShow/pic3.jpg'),
+          title: 'xxx3',
+          href: 'http://xxx.xxx.com'
+        },
+        {
+          src: require('../assets/slideShow/pic4.jpg'),
+          title: 'xxx4',
+          href: 'detail/forecast'
+        }
+      ],
       productList: {
         pc: {
           title: "pc产品",
