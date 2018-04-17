@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="index-right">
-      <slide-show :slides="slides" :inv="slideSpeed"></slide-show>
+      <slide-show :slides="slides" :inv="slideSpeed" @onchange1="doSomethingOnSlideChange"></slide-show>
       <div class="index-board-list">
         <div class="index-board-item" v-for="(item,index) in boardList" 
         v-bind:class="[{'line-last':index%2 !== 0},
@@ -177,6 +177,12 @@ export default {
         }
       ],
     };
+  },
+  methods: {
+    doSomethingOnSlideChange(){
+      console.log(11111)
+      console.log(this.nowIndex)
+    }
   }
 };
 </script>
