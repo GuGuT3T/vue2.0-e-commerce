@@ -56,7 +56,7 @@ export default {
       this.newsList = res.body;
     },(err) => {
       console.log('失败')
-      console.log(err)
+      console.log(err) 
     })
     
   },
