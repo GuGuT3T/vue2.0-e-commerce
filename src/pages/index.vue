@@ -180,9 +180,7 @@ export default {
   },
   methods: {
     doSomethingOnSlideChange(index){
-      console.log(11111)
-      console.log(index)
-
+      // console.log(index)
     }
   }
 };
