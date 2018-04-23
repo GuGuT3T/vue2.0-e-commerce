@@ -179,9 +179,10 @@ export default {
     };
   },
   methods: {
-    doSomethingOnSlideChange(){
+    doSomethingOnSlideChange(index){
       console.log(11111)
-      console.log(this.nowIndex)
+      console.log(index)
+
     }
   }
 };
