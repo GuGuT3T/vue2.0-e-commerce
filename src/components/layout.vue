@@ -30,15 +30,17 @@
       <p>log</p>
     </my-dialog>
     <my-dialog :isShow="isShowRegDialog" @on-close="closeDialog('isShowRegDialog')">
-      <p>reg</p>
+      <reg-f @has-reg="regSuccess"></reg-f>
     </my-dialog>
   </div>
 </template>
 <script>
 import Dialog from './dialog'
+import RegF from './reg'
 export default {
   components: {
-    MyDialog: Dialog
+    MyDialog: Dialog,
+    RegF,
   },
   data() {
     return {
@@ -62,6 +64,10 @@ export default {
       console.log(this)
       this[attr] = false
     },
+    regSuccess (username){
+      alert(`注册成功账号为${username}`)
+      this.closeDialog('isShowRegDialog')
+    }
   }
 };
 </script>
