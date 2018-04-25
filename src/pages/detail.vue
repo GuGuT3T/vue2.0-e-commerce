@@ -4,9 +4,6 @@
       <div class="product-board">
         <img :src="productIcon">
         <ul>
-          <!-- <li v-for="item in products">
-            {{item.name}}
-          </li> -->
           <router-link v-for="(item,key) in products" :key="key" :to="{ path:item.path }" tag="li" active-class="active">
              {{item.name}}
           </router-link> 

@@ -1,10 +1,12 @@
 <template>
-  <div class="dialog-wrap" v-if="isShow">
-      <div class="dialog-cover" @click="closeMyself"></div>
-      <div class="dialog-content">
-        <p class="dialog-close" @click="closeMyself">X</p>
-        <slot>empty</slot>
-      </div>
+  <div class="dialog-wrap">
+      <div class="dialog-cover"  v-if="isShow" @click="closeMyself"></div>
+      <transition name="drop">
+         <div class="dialog-content" v-if="isShow">
+          <p class="dialog-close" @click="closeMyself">X</p>
+          <slot>empty</slot>
+        </div>
+      </transition>
   </div>
 </template>
 <script>
@@ -36,10 +38,10 @@ export default {
   transition: all 0.3s ease;
 }
 .drop-enter {
-  transform: translateY(-500px);
+  transform: translateY(-500px); /*从-500到0*/
 }
 .drop-leave-active {
-  transform: translateY(-500px);
+  transform: translateY(-500px); /*从到-500*/
 }
 
 .dialog-wrap {

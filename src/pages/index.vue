@@ -68,22 +68,22 @@ export default {
         {
           src: require('../assets/slideShow/pic1.jpg'), // 通过require，webpack将图片解析到相应位置，js需要
           title: 'xxx1',
-          href: 'detail/analysis'
+          href: 'detail/ana'
         },
         {
           src: require('../assets/slideShow/pic2.jpg'),
           title: 'xxx2',
-          href: 'detail/count'
+          href: 'detail/cou'
         },
         {
           src: require('../assets/slideShow/pic3.jpg'),
           title: 'xxx3',
-          href: 'http://xxx.xxx.com'
+          href: 'detail/pub'
         },
         {
           src: require('../assets/slideShow/pic4.jpg'),
           title: 'xxx4',
-          href: 'detail/forecast'
+          href: 'detail/for'
         }
       ],
       productList: {
