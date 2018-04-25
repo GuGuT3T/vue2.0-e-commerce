@@ -17,6 +17,7 @@
                   产品类型：
               </div>
               <div class="sales-board-line-right">
+                <v-selection></v-selection>
               </div>
           </div>
           <div class="sales-board-line">
@@ -78,7 +79,7 @@
 </template>
 
 <script>
-// import VSelection from '../../components/base/selection'
+import VSelection from '../../components/base/select'
 // import VCounter from '../../components/base/counter'
 // import VChooser from '../../components/base/chooser'
 // import VMulChooser from '../../components/base/multiplyChooser'
@@ -88,7 +89,7 @@
 // import _ from 'lodash'
 export default {
   components: {
-    // VSelection,
+    VSelection,
     // VCounter,
     // VChooser,
     // VMulChooser,
