@@ -17,14 +17,14 @@
                   产品类型：
               </div>
               <div class="sales-board-line-right">
-                <v-selection></v-selection>
+                <v-selection :selections="versionList"></v-selection>
               </div>
           </div>
           <div class="sales-board-line">
               <div class="sales-board-line-left">
                   有效时间：
               </div>
-              <div class="sales-board-line-right">
+              <div class="sales-board-line-right"> 
               </div>
           </div>
           <div class="sales-board-line">

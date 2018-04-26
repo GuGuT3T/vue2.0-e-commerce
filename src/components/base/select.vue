@@ -4,11 +4,11 @@
         <span></span>
         <div class="arrow"></div>
       </div>
-      <div class="selection-list" v-show="isDrop">
+      <div class="selection-list" >
         <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
+          <li v-for="item in selections">
+            {{item.label}}
+          </li>
         </ul>
       </div>
     </div>
@@ -24,7 +24,7 @@ export default {
         value: 0
       }]
     }
-  },
+  }, 
   data () {
     return {
       isDrop: false,
