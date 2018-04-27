@@ -7,16 +7,17 @@
       <div class="sales-board-form">
           <div class="sales-board-line">
               <div class="sales-board-line-left">
-                  产品类型：
+                  购买数量：
               </div>
               <div class="sales-board-line-right">
               </div>
           </div>
           <div class="sales-board-line">
               <div class="sales-board-line-left">
-                  适用地区：
+                  媒介：
               </div>
               <div class="sales-board-line-right">
+                  <media :mediaList="mediaList"></media>
               </div>
           </div>
           <div class="sales-board-line">
@@ -242,20 +243,20 @@
 </template>
 
 <script>
-
+import Media from '../../components/base/media'
 export default {
   components: {
-   
+   Media,
   },
   data () {
     return {
-      buyTypes: [
+      mediaList: [
         {
-          label: '红色版',
+          label: 'pdf',
           value: 0
         },
         {
-          label: '绿色版',
+          label: '纸质报告',
           value: 1
         },
         {
@@ -263,32 +264,6 @@ export default {
           value: 2
         }
       ],
-      districts: [
-        {
-          label: '北京',
-          value: 0
-        },
-        {
-          label: '上海',
-          value: 1
-        },
-        {
-          label: '广州',
-          value: 2
-        },
-        {
-          label: '天津',
-          value: 3
-        },
-        {
-          label: '武汉',
-          value: 4
-        },
-        {
-          label: '重庆',
-          value: 5
-        },
-      ]
     }
   }
 }

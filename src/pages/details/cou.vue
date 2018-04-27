@@ -10,6 +10,7 @@
                   产品类型：
               </div>
               <div class="sales-board-line-right">
+                  <product-type  :buyTypes="buyTypesList"></product-type>
               </div>
           </div>
           <div class="sales-board-line">
@@ -242,14 +243,14 @@
 </template>
 
 <script>
-
+import ProductType from '../../components/base/productType'
 export default {
   components: {
-   
+   ProductType,
   },
   data () {
     return {
-      buyTypes: [
+      buyTypesList: [
         {
           label: '红色版',
           value: 0
