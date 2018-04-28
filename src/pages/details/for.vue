@@ -10,6 +10,7 @@
                   购买数量：
               </div>
               <div class="sales-board-line-right">
+                  <number-add></number-add>
               </div>
           </div>
           <div class="sales-board-line">
@@ -48,7 +49,6 @@
       <div class="sales-board-des">
         <h2>产品说明</h2>
         <p>历史资料、科学实验、检验、统计等所获得的和用于科学研究、技术设计、查证、决策等的数值加以统计为解决方案做前期准备。</p>
-
         <table class="sales-board-table">
           <tbody>
               <tr class="ui-table-row">
@@ -244,9 +244,11 @@
 
 <script>
 import Media from '../../components/base/media'
+import NumberAdd from '../../components/base/numberAdd'
 export default {
   components: {
    Media,
+   NumberAdd,
   },
   data () {
     return {
