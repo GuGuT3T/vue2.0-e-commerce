@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<span class="type" v-for="(item,index) in mediaList">
+		<span class="type" v-for="(item,index) in mediaList" @click="mediaClick(index)" :class="{active: checkActive(index)}">
 			{{item.label}}
 		</span>
 	</div>
@@ -20,12 +20,25 @@ export default {
   },
   data() {
     return {
-			nowIndex: ''
+			nowIndex: '',
+			nowIndexArr: [0],
 		};
 	},
 	methods: {
-		
+		mediaClick (parma) {
+			if(!this.nowIndexArr.includes(parma)){
+				this.nowIndexArr.push(parma)
+				this.nowIndexArr = [...new Set(this.nowIndexArr)]
+			}else{
+				let tempArr = this.nowIndexArr.filter((x,index) => x !== parma)
+				this.nowIndexArr = tempArr;
+				}
+		},
+		checkActive (index) {
+			return (this.nowIndexArr.includes(index))
+		}
 	}
+	
 };
 </script>
 <style scoped>
