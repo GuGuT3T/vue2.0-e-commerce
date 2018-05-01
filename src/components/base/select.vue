@@ -21,7 +21,7 @@ export default {
       type: Array,
       default: () => [
         {
-          label: 'test',
+          label: 'test', 
           value: 0
         }
       ]
