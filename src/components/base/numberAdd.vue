@@ -2,7 +2,7 @@
   <div class="counter-component">
       <div class="counter-btn" @click="minusNum">-</div>
 			<div class="counter-show">
-				<input type="text">
+				<input type="text" v-model="buyNumber" @keyup="buyNumber1()">
 			</div>
 			<div class="counter-btn" @click="addNum">+</div>
   </div>
@@ -12,21 +12,44 @@ export default {
 	props: {
 		max: {
 			type: Number,
-			default: 5
+			default: 20
 		},
 		min: {
 			type: Number,
-			default: 1
+			default: 5
 		}
 	},
 	data () {
 		return{
-			
+      buyNumber: 0,
 		}
 	},
 	methods: {
+    minusNum () {
 
-	}
+    },
+    addNum () {
+
+    },
+    buyNumber1 () {
+      let tempNumber;
+      if(typeof this.buyNumber === 'string' ){
+        tempNumber = this.buyNumber.replace(/\D/g,'')
+      }else{
+        tempNumber = this.buyNumber;
+      }
+      if(tempNumber > this.max || tempNumber < this.min && this.buyNumber != ''){
+        tempNumber = this.min;
+      }
+        this.buyNumber = tempNumber;
+    }
+  },
+  watch: {
+    buyNumber () {
+      console.log(1)
+      this.$emit('on-change',this.buyNumber)
+    }
+  }
 };
 </script>
 

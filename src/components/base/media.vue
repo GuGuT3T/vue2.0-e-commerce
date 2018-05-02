@@ -33,6 +33,8 @@ export default {
 				let tempArr = this.nowIndexArr.filter((x,index) => x !== parma)
 				this.nowIndexArr = tempArr;
 				}
+				console.log(this.nowIndexArr)
+				this.$emit('on-change',this.nowIndex)
 		},
 		checkActive (index) {
 			return (this.nowIndexArr.includes(index))

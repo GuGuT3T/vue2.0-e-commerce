@@ -15,6 +15,14 @@
           </div>
           <div class="sales-board-line">
               <div class="sales-board-line-left">
+                  版本:
+              </div>
+              <div class="sales-board-line-right">
+                <v-selection :selections="versionList" ></v-selection>
+              </div>
+          </div>
+          <div class="sales-board-line">
+              <div class="sales-board-line-left">
                   媒介：
               </div>
               <div class="sales-board-line-right">
@@ -243,32 +251,51 @@
 </template>
 
 <script>
-import Media from '../../components/base/media'
-import NumberAdd from '../../components/base/numberAdd'
+import Media from "../../components/base/media";
+import NumberAdd from "../../components/base/numberAdd";
+import VSelection from "../../components/base/select";
 export default {
   components: {
-   Media,
-   NumberAdd,
+    Media,
+    NumberAdd,
+    VSelection
   },
-  data () {
+  data() {
     return {
+			buyNum: 0,
+			buyVersion: {},
+			buyMedai: [],
       mediaList: [
         {
-          label: 'pdf',
+          label: "pdf",
           value: 0
         },
         {
-          label: '纸质报告',
+          label: "纸质报告",
           value: 1
         },
         {
-          label: '紫色版',
+          label: "紫色版",
           value: 2
         }
       ],
-    }
+      versionList: [
+        {
+          label: "客户版",
+          value: 0
+        },
+        {
+          label: "代理商版",
+          value: 1
+        },
+        {
+          label: "专家版",
+          value: 2
+        }
+      ]
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
