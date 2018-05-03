@@ -45,7 +45,7 @@ export default {
 </script>
 <style scoped>
 .type{
-		display: inline-block;
+		display: inline-block; 
 		width: 100px;
 		height: 30px;
 		line-height: 30px;
