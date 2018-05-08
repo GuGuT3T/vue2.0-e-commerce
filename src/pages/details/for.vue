@@ -10,7 +10,7 @@
                   购买数量：
               </div>
               <div class="sales-board-line-right">
-                  <number-add></number-add>
+                  <number-add @on-change="onParamChange('buyNum',$event)"></number-add>
               </div>
           </div>
           <div class="sales-board-line">
@@ -18,7 +18,8 @@
                   版本:
               </div>
               <div class="sales-board-line-right">
-                <v-selection :selections="versionList" ></v-selection>
+                <v-selection :selections="versionList" 
+                @on-change="onParamChange('buyVersion',$event)"></v-selection>
               </div>
           </div>
           <div class="sales-board-line">
@@ -26,7 +27,8 @@
                   媒介：
               </div>
               <div class="sales-board-line-right">
-                  <media :mediaList="mediaList"></media>
+                  <media :mediaList="mediaList"
+                  @on-change="onParamChange('buyMedia',$event)"></media>
               </div>
           </div>
           <div class="sales-board-line">
@@ -251,6 +253,7 @@
 </template>
 
 <script>
+import _ from 'lodash';
 import Media from "../../components/base/media";
 import NumberAdd from "../../components/base/numberAdd";
 import VSelection from "../../components/base/select";
@@ -262,9 +265,9 @@ export default {
   },
   data() {
     return {
-			buyNum: 0,
-			buyVersion: {},
-			buyMedai: [],
+      buyNum: 0,
+      buyVersion: {},
+      buyMedia: [],
       mediaList: [
         {
           label: "pdf",
@@ -294,6 +297,27 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    onParamChange (attr, val) {
+			this[attr] = val;
+			this.getPrice();
+		},
+		getPrice () {
+			let buyMediaArr = _.map(this.buyMedia,(item) => {
+				return item.value
+			})
+			let  reqParams = {
+				buyNum: this.buyNum,
+				buyVersion: this.buyVersion.value,
+				buyMedia: buyMediaArr.join(',')
+			}
+			this.$http.post('/api/getPrice', reqParams)
+      .then((res) => {
+        console.log(res.data)
+        this.price = res.data.amount
+      })
+		}
   }
 };
 </script>

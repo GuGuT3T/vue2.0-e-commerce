@@ -46,7 +46,6 @@ export default {
   },
   watch: {
     buyNumber () {
-      console.log(1)
       this.$emit('on-change',this.buyNumber)
     }
   }

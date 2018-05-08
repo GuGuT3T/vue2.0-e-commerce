@@ -6,6 +6,7 @@
 	</div>
 </template>
 <script>
+import _ from 'lodash'
 export default {
   props: {
     mediaList: {
@@ -33,8 +34,10 @@ export default {
 				let tempArr = this.nowIndexArr.filter((x,index) => x !== parma)
 				this.nowIndexArr = tempArr;
 				}
-				console.log(this.nowIndexArr)
-				this.$emit('on-change',this.nowIndex)
+				let nowObjArr = _.map(this.nowIndexArr,(idx) =>{
+					return this.mediaList[idx]
+				})
+				this.$emit('on-change',nowObjArr)
 		},
 		checkActive (index) {
 			return (this.nowIndexArr.includes(index))
