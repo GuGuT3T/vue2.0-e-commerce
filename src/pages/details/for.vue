@@ -50,7 +50,8 @@
           <div class="sales-board-line">
               <div class="sales-board-line-left">&nbsp;</div>
               <div class="sales-board-line-right">
-                  <div class="button">
+                  <div class="button" 
+									@click="showPayDialog" >
                     立即购买
                   </div>
               </div>
@@ -249,6 +250,9 @@
           </tbody>
       </table>
       </div>
+      <my-dialog :is-show="isShow" @on-close="hidePayDialog">
+          test
+      </my-dialog>
   </div>
 </template>
 
@@ -257,14 +261,17 @@ import _ from 'lodash';
 import Media from "../../components/base/media";
 import NumberAdd from "../../components/base/numberAdd";
 import VSelection from "../../components/base/select";
+import Dialog from '../../components/dialog';
 export default {
   components: {
     Media,
     NumberAdd,
-    VSelection
+    VSelection,
+    MyDialog: Dialog
   },
   data() {
     return {
+      isShow: false,
       buyNum: 0,
       buyVersion: {},
       buyMedia: [],
@@ -317,6 +324,12 @@ export default {
         console.log(res.data)
         this.price = res.data.amount
       })
+		},
+		showPayDialog () {
+			this.isShow = true;
+		},
+		hidePayDialog () {
+			this.isShow = false;
 		}
   }
 };

@@ -11,23 +11,22 @@
 </template>
 <script>
 export default {
-  props:{
-      isShow: {
-          type: Boolean,
-          default: false
-      }
+  props: {
+    isShow: {
+      type: Boolean,
+      default: false
+    }
   },
-  data () {
-      return {
-
-      }
+  data() {
+    return {};
   },
   methods: {
-      closeMyself () {
-          this.$emit('on-close')
-      }
+    closeMyself() {
+      this.$emit("on-close");
+      console.log(111)
+    }
   }
-}
+};
 </script>
 
 <style scoped>

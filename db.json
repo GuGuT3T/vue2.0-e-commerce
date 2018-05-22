@@ -26,8 +26,9 @@
     "userId": 123123
   },
   "getPrice": {
-    "buyNum": 0,
-    "buyMedia": "2"
+    "buyNum": 5,
+    "buyVersion": 1,
+    "buyMedia": "0"
   },
   "createOrder": {
     "orderId": "6djk979"
