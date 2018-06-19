@@ -12,7 +12,7 @@
            </li>
           </ul>
           <div v-if="!product.last" class="hr"></div>
-          </template>
+        </template>
       </div>
       <div class="index-left-block lastest-news">
         <h2>最新消息</h2>
@@ -38,14 +38,19 @@
         </div>
         </div>
       </div>
+      <test :testArr="testArr">
+
+      </test>
     </div>
   </div>
 </template>
 <script>
 import slideShow from '../components/slideShow.vue'
+import test from '../components/test'
 export default {
   components: {
-    slideShow
+    slideShow,
+    test
   },
   created: function (){
     // json-server:post请求一般为新增内容，获取数据用get
@@ -63,6 +68,9 @@ export default {
   data() {
     return {
       slideSpeed: 2000,
+      testArr: [
+        '1','2','3'
+      ],
       slides: [ // 轮播数组
 
         {

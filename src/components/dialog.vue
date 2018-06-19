@@ -23,7 +23,6 @@ export default {
   methods: {
     closeMyself() {
       this.$emit("on-close");
-      console.log(111)
     }
   }
 };
