@@ -185,7 +185,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .index-wrap {
   width: 1200px;
   margin: 0 auto;

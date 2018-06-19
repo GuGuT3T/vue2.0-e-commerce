@@ -39,9 +39,9 @@
   </div>
 </template>
 <script>
-import Dialog from './dialog'
-import LogForm from './logForm'
-import RegF from './reg'
+import Dialog from "./dialog";
+import LogForm from "./logForm";
+import RegF from "./reg";
 export default {
   components: {
     MyDialog: Dialog,
@@ -53,30 +53,30 @@ export default {
       isShowAboutDialog: false,
       isShowLogDialog: false,
       isShowRegDialog: false,
-      username: ''
+      username: ""
     };
   },
   methods: {
-    aboutClick () {
-      this.isShowAboutDialog = true
+    aboutClick() {
+      this.isShowAboutDialog = true;
     },
-    logClick () {
-      this.isShowLogDialog = true
+    logClick() {
+      this.isShowLogDialog = true;
     },
-    regClick () {
-      this.isShowRegDialog = true
+    regClick() {
+      this.isShowRegDialog = true;
     },
-    closeDialog (attr) {
-      this[attr] = false
+    closeDialog(attr) {
+      this[attr] = false;
     },
-    outClick () {
-      alert('退出')
+    outClick() {
+      alert("退出");
     },
-    onSuccessLog (data) {
-      console.log(data.username)
+    onSuccessLog(data) {
+      console.log(data.username);
       this.username = data.username;
       // this.isShowLogDialog = false;
-      this.closeDialog ('isShowLogDialog')
+      this.closeDialog("isShowLogDialog");
     }
   }
 };
@@ -84,19 +84,87 @@ export default {
 <style>
 /* scope 加入之后为局部样式 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -105,22 +173,35 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 body {
   line-height: 1;
 }
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
   content: none;
 }
 table {
@@ -133,7 +214,9 @@ a {
 }
 body {
   background: #f0f2f5;
-  font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB",
+    "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei",
+    "WenQuanYi Micro Hei", sans-serif;
   font-size: 14px;
   color: #444;
 }
@@ -197,7 +280,6 @@ body {
   background: #4fc08d;
 }
 .g-form {
-
 }
 .g-form-line {
   padding: 15px 0;
