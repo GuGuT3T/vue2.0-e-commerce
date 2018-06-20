@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <!-- <div style="color:#666; width:100px; border:1px solid red; display:inline-block">
+      <p>{{item}}</p>
+      <slot>默认内容</slot>
+  </div> -->
+  <div> 
     <div v-for="(item,index) in testArr">
       <p>{{item}}</p>
     </div>
-    <!-- <div>
-      1
-    </div> -->
   </div>
 </template>
 <script>

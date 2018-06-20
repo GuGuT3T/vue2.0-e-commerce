@@ -38,60 +38,67 @@
         </div>
         </div>
       </div>
-      <test :testArr="testArr">
+      <!-- <test :testArr="testArr" v-for="(item,index) in testArr" :key="index">
+          <p>{{item}}{{index}}</p>
+      </test> -->
+      <keep-alive v-if="view">
+        <test :testArr="testArr">
 
-      </test>
+        </test>
+      </keep-alive>
+      <button @click="testClick()">测试</button>
     </div>
   </div>
 </template>
 <script>
-import slideShow from '../components/slideShow.vue'
-import test from '../components/test'
+import slideShow from "../components/slideShow.vue";
+import test from "../components/test";
 export default {
   components: {
     slideShow,
     test
   },
-  created: function (){
+  created: function() {
     // json-server:post请求一般为新增内容，获取数据用get
     // 如果需要用到post可以用express+fs请求本地文件
-    this.$http.get('api/getNewsList')
-    .then((res) => {
-      console.log('成功')
-      this.newsList = res.body;
-    },(err) => {
-      console.log('失败')
-      console.log(err) 
-    })
-    
+    this.$http.get("api/getNewsList").then(
+      res => {
+        console.log("成功");
+        this.newsList = res.body;
+      },
+      err => {
+        console.log("失败");
+        console.log(err);
+      }
+    );
   },
   data() {
     return {
       slideSpeed: 2000,
-      testArr: [
-        '1','2','3'
-      ],
-      slides: [ // 轮播数组
+      testArr: ["古", "元", "坤"],
+      view: false,
+      slides: [
+        // 轮播数组
 
         {
-          src: require('../assets/slideShow/pic1.jpg'), // 通过require，webpack将图片解析到相应位置，js需要
-          title: 'xxx1',
-          href: 'detail/ana'
+          src: require("../assets/slideShow/pic1.jpg"), // 通过require，webpack将图片解析到相应位置，js需要
+          title: "xxx1",
+          href: "detail/ana"
         },
         {
-          src: require('../assets/slideShow/pic2.jpg'),
-          title: 'xxx2',
-          href: 'detail/cou'
+          src: require("../assets/slideShow/pic2.jpg"),
+          title: "xxx2",
+          href: "detail/cou"
         },
         {
-          src: require('../assets/slideShow/pic3.jpg'),
-          title: 'xxx3',
-          href: 'detail/pub'
+          src: require("../assets/slideShow/pic3.jpg"),
+          title: "xxx3",
+          href: "detail/pub"
         },
         {
-          src: require('../assets/slideShow/pic4.jpg'),
-          title: 'xxx4',
-          href: 'detail/for'
+          src: require("../assets/slideShow/pic4.jpg"),
+          title: "xxx4",
+          href: "detail/for"
         }
       ],
       productList: {
@@ -99,21 +106,21 @@ export default {
           title: "pc产品",
           list: [
             {
-              name: '数据统计',
-              url: 'http://starcraft.com'
+              name: "数据统计",
+              url: "http://starcraft.com"
             },
             {
-              name: '数据预测',
-              url: 'http://warcraft.com'
+              name: "数据预测",
+              url: "http://warcraft.com"
             },
             {
-              name: '流量分析',
-              url: 'http://overwatch.com',
-              hot: true,
+              name: "流量分析",
+              url: "http://overwatch.com",
+              hot: true
             },
             {
-              name: '广告发布',
-              url: 'http://hearstone.com'
+              name: "广告发布",
+              url: "http://hearstone.com"
             }
           ]
         },
@@ -121,21 +128,21 @@ export default {
           title: "手机应用类",
           last: true,
           list: [
-             {
-              name: '91助手',
-              url: 'http://weixin.com'
+            {
+              name: "91助手",
+              url: "http://weixin.com"
             },
             {
-              name: '产品助手',
-              url: 'http://twitter.com',
+              name: "产品助手",
+              url: "http://twitter.com"
             },
             {
-              name: '智能地图',
-              url: 'http://maps.com'
+              name: "智能地图",
+              url: "http://maps.com"
             },
             {
-              name: '团队语音',
-              url: 'http://phone.com'
+              name: "团队语音",
+              url: "http://phone.com"
             }
           ]
         }
@@ -156,39 +163,42 @@ export default {
       ],
       boardList: [
         {
-          title: '开放产品',
-          description: '开放产品是一款开放产品',
-          id: 'car',
-          toKey: 'analysis',
+          title: "开放产品",
+          description: "开放产品是一款开放产品",
+          id: "car",
+          toKey: "analysis",
           saleout: false
         },
         {
-          title: '品牌营销',
-          description: '品牌营销帮助你的产品更好地找到定位',
-          id: 'earth',
-          toKey: 'count',
+          title: "品牌营销",
+          description: "品牌营销帮助你的产品更好地找到定位",
+          id: "earth",
+          toKey: "count",
           saleout: false
         },
         {
-          title: '使命必达',
-          description: '使命必达快速迭代永远保持最前端的速度',
-          id: 'loud',
-          toKey: 'forecast',
+          title: "使命必达",
+          description: "使命必达快速迭代永远保持最前端的速度",
+          id: "loud",
+          toKey: "forecast",
           saleout: true
         },
         {
-          title: '勇攀高峰',
-          description: '帮你勇闯高峰，到达事业的顶峰',
-          id: 'hill',
-          toKey: 'publish',
+          title: "勇攀高峰",
+          description: "帮你勇闯高峰，到达事业的顶峰",
+          id: "hill",
+          toKey: "publish",
           saleout: false
         }
-      ],
+      ]
     };
   },
   methods: {
-    doSomethingOnSlideChange(index){
+    doSomethingOnSlideChange(index) {
       // console.log(index)
+    },
+    testClick () {
+      this.view = !this.view
     }
   }
 };
