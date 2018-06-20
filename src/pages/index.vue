@@ -41,12 +41,15 @@
       <!-- <test :testArr="testArr" v-for="(item,index) in testArr" :key="index">
           <p>{{item}}{{index}}</p>
       </test> -->
-      <keep-alive v-if="view">
-        <test :testArr="testArr">
+      <keep-alive>
+        <!-- <test :testArr="testArr"  v-if="view">
 
         </test>
+        <test :testArr="testArr" v-else>
+          1111
+        </test> -->
       </keep-alive>
-      <button @click="testClick()">测试</button>
+      <button @click="testClick()">缓存测试</button>
     </div>
   </div>
 </template>
